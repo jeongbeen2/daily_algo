@@ -28,4 +28,5 @@ function solution(nums) {
   return answer;
 }
 
-solution([1, 2, 4, 6, 7]);
+let output = solution([1, 2, 4, 6, 7]);
+console.log(output); // -> 4
