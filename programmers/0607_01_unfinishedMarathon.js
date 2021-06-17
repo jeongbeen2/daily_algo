@@ -1,3 +1,13 @@
+function solution(participant, completion) {
+  participant.sort();
+  completion.sort();
+  for (let i = 0; i < participant.length; i++) {
+    for (let j = i; j <= i; j++) {
+      if (participant[i] !== completion[j]) return participant[i];
+    }
+  }
+}
+
 // function solution(participant, completion) {
 //   while (completion.length > 0) {
 //     let comp = completion.shift();
@@ -10,15 +20,6 @@
 //   }
 //   return participant[0];
 // }
-function solution(participant, completion) {
-  participant.sort();
-  completion.sort();
-  for (let i = 0; i < participant.length; i++) {
-    for (let j = i; j <= i; j++) {
-      if (participant[i] !== completion[j]) return participant[i];
-    }
-  }
-}
 
 let output = solution(['leo', 'kiki', 'eden'], ['eden', 'kiki']);
 console.log(output); // --> 'leo'
