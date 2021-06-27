@@ -1,8 +1,8 @@
 function solution(strings, n) {
-  let alpha = 'abcdefghijklmnopqrstuvwxyz';
-  for (let i = 0; i < strings.length; i++) {
-    console.log(strings[i][n]);
-  }
+  return strings
+    .map((str) => (str = str[n] + str))
+    .sort()
+    .map((str) => str.slice(1));
 }
 
 let output = solution(['sun', 'bed', 'car'], 1);
