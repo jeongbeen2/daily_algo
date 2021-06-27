@@ -1,11 +1,11 @@
 function solution(n, m) {
   let min = Math.min(n, m);
   let max = Math.max(n, m);
-  const GCD = (minNum, maxNum) => {
-    return minNum % maxNum === 0 ? maxNum : GCD(maxNum, minNum % maxNum);
+  const GCD = (min, max) => {
+    return min % max === 0 ? max : GCD(max, min % max);
   };
-  const LCM = (minNum, maxNum) => {
-    return (minNum * maxNum) / GCD(minNum, maxNum);
+  const LCM = (min, max) => {
+    return (min * max) / GCD(min, max);
   };
   return [GCD(min, max), LCM(min, max)];
 }
