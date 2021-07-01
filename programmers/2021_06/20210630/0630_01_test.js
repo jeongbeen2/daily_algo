@@ -15,6 +15,7 @@ function solution(answers) {
     count: 0,
   };
   let supos = [first, second, third];
+
   // 3명의 수포자가 맞춘 문제 수 구하기
   for (let supo of supos) {
     for (let i = 0; i < answers.length; i++) {
