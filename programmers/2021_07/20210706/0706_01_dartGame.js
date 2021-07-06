@@ -1,26 +1,40 @@
 function solution(dartResult) {
-  let arr = [0, 0, 0];
-  let point = -1;
-  for (var i = 0; i < dartResult.length; i++) {
-    if (Number.isInteger(dartResult[i] * 1)) {
-      point++;
-      if (dartResult[i] == '1' && dartResult[i + 1] == '0') {
-        arr[point] += 10;
-        i++;
-        continue;
-      } else arr[point] += dartResult[i] * 1;
-    } else {
-      if (dartResult[i] == 'D') arr[point] **= 2;
-      else if (dartResult[i] == 'T') arr[point] **= 3;
-      else if (dartResult[i] == '*') {
-        arr[point] *= 2;
-        arr[point - 1] *= 2;
-      } else if (dartResult[i] == '#') arr[point] *= -1;
+  let result = [];
+  let num = '1234567890';
+  let temp = '';
+  let SDT = ['S', 'D', 'T'];
+  let bonus = ['*', '#'];
+  for (let i = 0; i < dartResult.length; i++) {
+    if (num.includes(dartResult[i])) {
+      temp += dartResult[i];
+    } //
+    else if (SDT.includes(dartResult[i])) {
+      if (temp !== '') {
+        result.push(temp);
+        temp = '';
+      }
+      temp = result.pop();
+      if (dartResult[i] === 'S') temp = parseInt(temp) ** 1;
+      else if (dartResult[i] === 'D') temp = parseInt(temp) ** 2;
+      else if (dartResult[i] === 'T') temp = parseInt(temp) ** 3;
+      result.push(temp);
+      temp = '';
+    } //
+    else if (bonus.includes(dartResult[i])) {
+      if (dartResult[i] === '#') {
+        temp = result.pop();
+        temp = -temp;
+        result.push(temp);
+        temp = '';
+      } //
+      else if (dartResult[i] === '*') {
+        result = result.map((el) => el * 2);
+        if (i === dartResult.length - 1) result[0] /= 2;
+      }
     }
   }
-  return arr.reduce((a, b) => a + b);
+  return result.reduce((acc, cur) => acc + cur);
 }
-
 let output = solution('1S2D*3T');
 console.log(output); // --> 37
 
