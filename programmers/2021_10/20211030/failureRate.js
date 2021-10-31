@@ -22,7 +22,6 @@ function solution(N, stages) {
   // * for문이 끝나면 실패율 계산 후 실패율Arr.push
 
   let failure_Array = [];
-  let result = [];
 
   for (let level = 1; level <= N; level++) {
     let fail = 0;
@@ -34,7 +33,7 @@ function solution(N, stages) {
       }
     }
     let fail_rate = fail / total;
-    failure_Array.push(fail_rate);
+    failure_Array.push([level, fail_rate]);
   }
 
   // * 스테이지별로 변수 지정해서 하는것은 한계가 있음
@@ -48,21 +47,13 @@ function solution(N, stages) {
   // * for문 -> if(temp > 실패율[i]) temp = 실패율[i], stage = i+1;
 
   // TODO : 순서대로 정리된 failure_array와 인덱스를 가지고 정렬하기
-  // let temp = failure_Array[0];
-  // for (let i = 1; i <= N; i++) {
-  //   let stage = 1;
 
-  //   for (let j = 0; j < failure_Array.length; j++) {
-  //     // * 이미 result배열 안에 있는 값은 넘어가기
-  //     if (result.includes(stage)) stage++;
-  //     if (temp <= failure_Array[j]) {
-  //       temp = failure_Array[j];
-  //       stage++;
-  //     }
-  //   }
-  //   result.push(stage);
-  // failure_Array.splice(stage - 1, 1);
-  // }
+  failure_Array.sort((a, b) => b[1] - a[1]);
+  let result = [];
+  for (let el of failure_Array) {
+    result.push(el[0]);
+  }
+  return result;
 }
 
 let output = solution(5, [2, 1, 2, 6, 2, 4, 3, 3]);
