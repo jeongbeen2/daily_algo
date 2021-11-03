@@ -1,13 +1,15 @@
 function solution(dartResult) {
-  let result = [];
   let num = '1234567890';
-  let temp = '';
   let SDT = ['S', 'D', 'T'];
   let bonus = ['*', '#'];
+  let result = [];
+  let temp = '';
   for (let i = 0; i < dartResult.length; i++) {
+    // dartResult[i]가 score 일 경우
     if (num.includes(dartResult[i])) {
       temp += dartResult[i];
     } //
+    // dartResult[i]가 S,D,T 일 경우
     else if (SDT.includes(dartResult[i])) {
       if (temp !== '') {
         result.push(temp);
@@ -20,6 +22,7 @@ function solution(dartResult) {
       result.push(temp);
       temp = '';
     } //
+    // dartResult[i]가 bonus(*, #) 일 경우
     else if (bonus.includes(dartResult[i])) {
       if (dartResult[i] === '#') {
         temp = result.pop();
