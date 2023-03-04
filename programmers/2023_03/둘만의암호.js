@@ -3,6 +3,7 @@ function solution(s, skip, index) {
   let filterArr = "abcdefghijklmnopqrstuvwxyz"
     .split("")
     .filter((a) => !skip.split("").includes(a));
+
   return word
     .map((_, i) => {
       let newIndex = filterArr.indexOf(word[i]) + index;
