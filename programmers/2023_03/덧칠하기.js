@@ -8,6 +8,7 @@ function solution(n, m, section) {
       result++;
     }
   }
+
   return result;
 }
 

@@ -11,6 +11,7 @@ function solution(keymap, targets) {
     if (result > 999) result = -1;
     answer.push(result);
   });
+
   return answer;
 }
 
