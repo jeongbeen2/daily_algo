@@ -10,7 +10,6 @@ function solution(board) {
     [3, 5, 7],
   ];
   let obj = {};
-
   board.map((el, i) => {
     el.split("").map((e, j) => {
       let key = j + i * 3;
