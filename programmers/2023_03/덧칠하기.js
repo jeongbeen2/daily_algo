@@ -1,12 +1,13 @@
 function solution(n, m, section) {
   let index = 0;
   let result = 0;
-  section.map((el) => {
-    if (index < el) {
-      index = el + m - 1;
+  for (let i = 0; i < section.length; i++) {
+    if (index >= n) break;
+    if (index < section[i]) {
+      index = section[i] + m - 1;
       result++;
     }
-  });
+  }
 
   return result;
 }
