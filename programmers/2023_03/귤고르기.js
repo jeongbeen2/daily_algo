@@ -1,17 +1,19 @@
 function solution(k, tangerine) {
-  // 해시테이블로 문제 해결 가능
-  let hash = {
-    1: 1,
-    2: 2,
-    3: 2,
-    4: 1,
-    5: 2,
-  };
+  const obj = {};
+  tangerine.forEach((n) => {
+    obj[n] = ++obj[n] || 1;
+  });
 
-  // hash의 value중, 가장 큰수부터 채워나감.
-  // 더했을때 k보다 같거나 커질경우 종료
+  const kind = Object.values(obj).sort((a, b) => b - a);
 
-  var answer = 0;
+  let sum = 0;
+  let answer = 0;
+  for (let num of kind) {
+    answer++;
+    sum += num;
+    if (sum >= k) break;
+  }
+
   return answer;
 }
 
