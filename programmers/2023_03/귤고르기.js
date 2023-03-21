@@ -3,7 +3,6 @@ function solution(k, tangerine) {
   tangerine.forEach((n) => {
     obj[n] = ++obj[n] || 1;
   });
-
   const kind = Object.values(obj).sort((a, b) => b - a);
 
   let sum = 0;
